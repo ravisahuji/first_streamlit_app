@@ -12,7 +12,7 @@ streamlit.text('🥗 Kale, Spinach & Rocket Smoothie!!')
 streamlit.text('🐔 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑🍞 Avocado Toast')
 
-streamlit.header('🍌🥭 Build Your Own Fruit Smoothie! 🥝🍇')
+streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 # import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
@@ -44,8 +44,8 @@ try:
 except URLError as e:
   stramlit.error()
 
-# don't run anything past here while we troubleshoot
-streamlit.stop()
+# # don't run anything past here while we troubleshoot
+# streamlit.stop()
 
 # import snowflake.connector
 # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
@@ -60,7 +60,7 @@ streamlit.dataframe(my_data_rows)
 # Allow the end user to add a fruit to the list
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
-        my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+        my_cur.execute("insert into fruit_load_list values ('" + jackfruit + "')")
         return "Thanks for adding " + new_fruit
         
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
